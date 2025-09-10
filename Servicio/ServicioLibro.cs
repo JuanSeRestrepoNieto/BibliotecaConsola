@@ -88,8 +88,6 @@ namespace Biblioteca.Servicio
 
             if (_repositorioLibro.ExisteIsbn(isbn))
                 throw new ArgumentException($"Ya existe un libro con ISBN '{isbn}'");
-        }
-
-        
+        }        
     }
 }

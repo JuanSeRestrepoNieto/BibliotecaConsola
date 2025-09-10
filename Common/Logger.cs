@@ -15,11 +15,13 @@ public static class Logger
   public static void Success(string message)
   {
     Console.WriteLine($"✅ {message}");
+    Pause();
   }
 
   public static void Error(string message)
   {
     Console.WriteLine($"❌ {message}");
+    Pause();
   }
 
   public static void Warning(string message)
