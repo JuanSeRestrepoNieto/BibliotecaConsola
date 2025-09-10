@@ -1,4 +1,4 @@
-namespace Common;
+namespace Biblioteca.Common;
 
 public static class Logger
 {
@@ -7,13 +7,30 @@ public static class Logger
     Console.WriteLine(message);
   }
 
-  public static void LogError(string message)
+  public static void Info(string message)
   {
-    Console.WriteLine($"Error: {message}");
+    Console.WriteLine($"ℹ️  {message}");
   }
 
-  public static void LogWarning(string message)
+  public static void Success(string message)
   {
-    Console.WriteLine($"Warning: {message}");
+    Console.WriteLine($"✅ {message}");
+  }
+
+  public static void Error(string message)
+  {
+    Console.WriteLine($"❌ {message}");
+  }
+
+  public static void Warning(string message)
+  {
+    Console.WriteLine($"⚠️  {message}");
+  }
+
+  public static void Pause()
+  {
+    Console.WriteLine();
+    Console.Write("Presione cualquier tecla para continuar...");
+    Console.ReadKey();
   }
 }

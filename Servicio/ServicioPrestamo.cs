@@ -1,4 +1,6 @@
+using Biblioteca.Common;
 using Biblioteca.Dominio;
+using Biblioteca.Servicio.Interfaces;
 using Biblioteca.Infraestructura;
 
 namespace Biblioteca.Servicio
@@ -6,7 +8,7 @@ namespace Biblioteca.Servicio
     /// <summary>
     /// Servicio que maneja la lógica de negocio para préstamos.
     /// </summary>
-    public class ServicioPrestamo
+    public class ServicioPrestamo : IServicioPrestamo
     {
         private readonly IRepositorioPrestamo _repositorioPrestamo;
         private readonly IRepositorioUsuario _repositorioUsuario;
@@ -47,7 +49,7 @@ namespace Biblioteca.Servicio
                 var prestamo = new Prestamo(prestamoId, usuario, libro, diasPrestamo);
                 _repositorioPrestamo.AgregarPrestamo(prestamo);
                 
-                LogOperacion($"Préstamo realizado: {prestamo}");
+                Logger.Log($"Préstamo realizado: {prestamo}");
             }
             catch (Exception ex)
             {
@@ -72,7 +74,7 @@ namespace Biblioteca.Servicio
                 prestamo.RegistrarDevolucion();
                 _repositorioPrestamo.ActualizarPrestamo(prestamo);
                 
-                LogOperacion($"Devolución registrada: {prestamo}");
+                Logger.Log($"Devolución registrada: {prestamo}");
             }
             catch (Exception ex)
             {
@@ -127,11 +129,6 @@ namespace Biblioteca.Servicio
         private string GenerarIdPrestamo()
         {
             return $"P{DateTime.Now:yyyyMMddHHmmss}";
-        }
-
-        private void LogOperacion(string mensaje)
-        {
-            Console.WriteLine($"[{DateTime.Now:HH:mm:ss}] {mensaje}");
         }
     }
 }

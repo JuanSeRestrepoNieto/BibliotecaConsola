@@ -1,21 +1,22 @@
 using Biblioteca.Dominio;
 using Biblioteca.Infraestructura;
+using Biblioteca.Servicio.Interfaces;
 
 namespace Biblioteca.Servicio
 {
     /// <summary>
     /// Servicio principal que coordina todas las operaciones de la biblioteca.
     /// </summary>
-    public class ServicioBiblioteca
+    public class ServicioBiblioteca : IServicioBiblioteca
     {
-        private readonly ServicioUsuario _servicioUsuario;
-        private readonly ServicioLibro _servicioLibro;
-        private readonly ServicioPrestamo _servicioPrestamo;
+        private readonly IServicioUsuario _servicioUsuario;
+        private readonly IServicioLibro _servicioLibro;
+        private readonly IServicioPrestamo _servicioPrestamo;
 
         public ServicioBiblioteca(
-            ServicioUsuario servicioUsuario,
-            ServicioLibro servicioLibro,
-            ServicioPrestamo servicioPrestamo)
+            IServicioUsuario servicioUsuario,
+            IServicioLibro servicioLibro,
+            IServicioPrestamo servicioPrestamo)
         {
             _servicioUsuario = servicioUsuario ?? throw new ArgumentNullException(nameof(servicioUsuario));
             _servicioLibro = servicioLibro ?? throw new ArgumentNullException(nameof(servicioLibro));

@@ -1,4 +1,6 @@
+using Biblioteca.Common;
 using Biblioteca.Dominio;
+using Biblioteca.Servicio.Interfaces;
 using Biblioteca.Infraestructura;
 
 namespace Biblioteca.Servicio
@@ -6,7 +8,7 @@ namespace Biblioteca.Servicio
     /// <summary>
     /// Servicio que maneja la lógica de negocio para libros.
     /// </summary>
-    public class ServicioLibro
+    public class ServicioLibro : IServicioLibro
     {
         private readonly IRepositorioLibro _repositorioLibro;
 
@@ -27,7 +29,7 @@ namespace Biblioteca.Servicio
                 var libro = new Libro(id, titulo, autor, isbn);
                 _repositorioLibro.AgregarLibro(libro);
                 
-                LogOperacion($"Libro agregado: {libro}");
+                Logger.Log($"Libro agregado: {libro}");
             }
             catch (Exception ex)
             {
@@ -88,9 +90,6 @@ namespace Biblioteca.Servicio
                 throw new ArgumentException($"Ya existe un libro con ISBN '{isbn}'");
         }
 
-        private void LogOperacion(string mensaje)
-        {
-            Console.WriteLine($"[{DateTime.Now:HH:mm:ss}] {mensaje}");
-        }
+        
     }
 }
