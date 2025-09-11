@@ -27,6 +27,7 @@ namespace Biblioteca
     private static void InicializarServicios()
     {
       // Crear repositorios
+      // Segregación de interfaces y principio de Liskov
       IRepositorioUsuario repositorioUsuario = new RepositorioUsuario();
       IRepositorioLibro repositorioLibro = new RepositorioLibro();
       IRepositorioPrestamo repositorioPrestamo = new RepositorioPrestamo();
