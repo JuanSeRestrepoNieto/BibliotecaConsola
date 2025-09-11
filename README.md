@@ -105,5 +105,6 @@ El sistema incluye validaciones para:
 - Disponibilidad de libros antes de préstamo
 - Validación de fechas y períodos de préstamo
 
-## Autor
-Sistema desarrollado como ejercicio académico para demostrar los principios de POO en un caso de uso práctico.
+## Autores
+Felipe Olaya Benitez
+Juan Sebastian Restrepo Nieto
